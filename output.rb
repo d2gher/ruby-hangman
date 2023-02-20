@@ -103,7 +103,6 @@ end
 module WordInProgress
   def print_word_in_progress(word)
     puts word.gsub(/\w/) { |w| " #{w} " }
-    puts ''
   end
 
   def promte_for_letter
@@ -112,5 +111,15 @@ module WordInProgress
 
   def used_letter
     'You already used that letter.'
+  end
+
+  def print_result(result)
+    sleep 1
+    puts "\n#{'-' * result.length}"
+    sleep 1
+    puts result
+    sleep 1
+    puts "#{'-' * result.length}\n"
+    sleep 1
   end
 end

@@ -15,8 +15,14 @@ def play_a_round(word, word_in_progress, wrong_letters, currect_letters)
     print_hangman(mistakes)
     print_word_in_progress(word_in_progress)
     puts message
-    break unless word_in_progress.include?('_')
-    break unless mistakes < 7
+    unless word_in_progress.include?('_')
+      print_result('You won! No hanging for today')
+      break
+    end
+    unless mistakes < 7
+      print_result("You lost! Maybe death isn't so bad")
+      break
+    end
 
     message = ''
     letter = get_letter
