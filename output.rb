@@ -2,88 +2,98 @@
 
 # Module for printing hangman
 module Hangman
-  def hangman(stage)
+  def print_hangman(stage)
+    puts '-----------------'
+    puts "You can save him!"
+    puts '-----------------'
     case stage
     when 0
       puts "
-    ________
-   |        |
-            |
-            |
-            |
-            |
- ___________|
+    _________
+    |        |
+             |
+             |
+             |
+             |
+  ___________|
 
-      "
+"
     when 1
       puts "
-    ________
+    _________
     |        |
     o        |
              |
              |
              |
   ___________|
+
 "
     when 2
       puts "
-    ________
+    _________
     |        |
     o        |
     |        |
              |
              |
   ___________|
+
 "
     when 3
       puts "
-    ________
+    _________
     |        |
     o        |
     |        |
     |        |
              |
   ___________|
+
 "
     when 4
       puts "
-    ________
+    _________
     |        |
     o        |
    /|        |
     |        |
              |
   ___________|
+
 "
     when 5
       puts "
-    ________
+    _________
     |        |
     o        |
    /|\\       |
     |        |
              |
   ___________|
+
 "
     when 6
       puts "
-    ________
+    _________
     |        |
     o        |
    /|\\       |
     |        |
    /         |
   ___________|
+
 "
     when 7
       puts "
-    ________
+    _________
     |        |
     o        |
    /|\\       |
     |        |
    / \\       |
   ___________|
+
 "
     end
   end
@@ -94,5 +104,13 @@ module WordInProgress
   def print_word_in_progress(word)
     puts word.gsub(/\w/) { |w| " #{w} " }
     puts ''
+  end
+
+  def promte_for_letter
+    puts 'Enter a letter:'
+  end
+
+  def used_letter
+    'You already used that letter.'
   end
 end
