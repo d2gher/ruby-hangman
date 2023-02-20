@@ -14,15 +14,33 @@ def filter_words_into_array
   words
 end
 
-def get_letter
+def get_letter(currect_letters, wrong_letters)
   char = []
   until char.length == 1 && char.match?(/[[:alpha:]]/)
     promte_for_letter
-    char = gets.chomp
+    temp = gets.chomp
+    if wrong_letters.include?(temp) || currect_letters.include?(temp)
+      puts used_letter
+    else
+      char = temp
+    end
   end
   char
 end
 
 def clear_console
   $stdout.clear_screen # or STDOUT.clear_screen
+end
+
+def won_or_lost?(word_in_progress, mistakes)
+  unless word_in_progress.include?('_')
+    print_result('You won! No hanging for today')
+    return true
+  end
+
+  unless mistakes < 7
+    print_result("You lost! Maybe death isn't so bad")
+    return true
+  end
+  false
 end

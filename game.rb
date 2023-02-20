@@ -14,22 +14,13 @@ def play_a_round(word, word_in_progress, wrong_letters, currect_letters)
     puts word
     print_hangman(mistakes)
     print_word_in_progress(word_in_progress)
-    puts message
-    unless word_in_progress.include?('_')
-      print_result('You won! No hanging for today')
-      break
-    end
-    unless mistakes < 7
-      print_result("You lost! Maybe death isn't so bad")
-      break
-    end
-
+    puts message unless message == ''
     message = ''
-    letter = get_letter
-    if wrong_letters.include?(letter) || currect_letters.include?(letter)
-      message = used_letter
-      next
-    end
+
+    break if won_or_lost?(word_in_progress, mistakes)
+
+    letter = get_letter(currect_letters, wrong_letters)
+
     if word.include?(letter)
       currect_letters.append(letter)
       word.split('').each_with_index do |char, index|
