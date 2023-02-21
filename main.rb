@@ -7,14 +7,13 @@ include Messages
 
 words = filter_words_into_array
 
-word = words.sample
-word_in_progress = Array.new(word.length, '_').join.to_s
-wrong_letters = []
-currect_letters = []
-
+clear_console
+print_welcome_screen
 loop do
-  print_welcome_screen
-
+  word = words.sample
+  word_in_progress = Array.new(word.length, '_').join.to_s
+  wrong_letters = []
+  currect_letters = []
   option = 0
   until [1, 2].include?(option)
     print_pick_option

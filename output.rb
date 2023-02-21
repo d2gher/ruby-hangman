@@ -137,13 +137,18 @@ end
 # Modul for messages to be output
 module Messages
   def print_welcome_screen
-    puts "Welcome to hangman"
+    puts "\033[1mHangman\033[0m
+A vast vocabulary saves lives!
+
+Try saving your loved one from hanging
+by guessing the correct word"
   end
+
   def print_pick_option
     puts "
-1. New game
-2. Load game
-Pick an option:
+Pick an option: 1. New game
+                2. Load game
+                Ctrl + C to exit
 "
   end
 
