@@ -54,6 +54,7 @@ def save_game(game_info)
   end
 
   Dir.mkdir('savefiles') unless Dir.exist?('savefiles')
+  
   File.open("savefiles/#{filename}", 'w') do |file|
     file.puts game_info
   end
@@ -66,4 +67,21 @@ def game_state(word, word_in_progress, wrong_letters, currect_letters)
     :wrong_letters => wrong_letters,
     :currect_letters => currect_letters
   }
+end
+
+def filenumber?(files)
+  filenumber = -1
+  until filenumber >= 0 && filenumber < files.length
+    print_load_game_message
+    filenumber = gets.chomp.to_i - 1
+  end
+  filenumber
+end
+
+def load_files
+  files = Dir['savefiles/*']
+  files.each_with_index do |file, index|
+    puts "#{index + 1}. #{file.gsub('savefiles/', '')}"
+  end
+  files
 end

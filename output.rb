@@ -133,3 +133,21 @@ module WordInProgress
     sleep 1
   end
 end
+
+# Modul for messages to be output
+module Messages
+  def print_welcome_screen
+    puts "Welcome to hangman"
+  end
+  def print_pick_option
+    puts "
+1. New game
+2. Load game
+Pick an option:
+"
+  end
+
+  def print_load_game_message
+    puts 'Enter the number of file to load:'
+  end
+end

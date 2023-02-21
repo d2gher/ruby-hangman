@@ -30,3 +30,21 @@ def play_a_round(word, word_in_progress, wrong_letters, currect_letters)
     end
   end
 end
+
+def load_game
+  clear_console
+  files = load_files
+  filenumber = filenumber?(files)
+
+  begin
+    file = eval(File.read(files[filenumber]))
+    word = file[:word]
+    word_in_progress = file[:word_in_progress]
+    wrong_letters = file[:wrong_letters]
+    currect_letters = file[:currect_letters]
+
+    play_a_round(word, word_in_progress, wrong_letters, currect_letters)
+  rescue
+    puts "Load filed"
+  end
+end
