@@ -4,8 +4,9 @@
 module Hangman
   def print_hangman(stage)
     puts '-----------------'
-    puts "You can save him!"
+    puts 'You can save him!'
     puts '-----------------'
+
     case stage
     when 0
       puts "
@@ -125,7 +126,7 @@ module WordInProgress
 
   def print_result(result)
     sleep 1
-    puts "#{'-' * result.length}"
+    puts ('-' * result.length).to_s
     sleep 1
     puts result
     sleep 1

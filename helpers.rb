@@ -14,13 +14,15 @@ def filter_words_into_array
   words
 end
 
-def get_letter(wrong_letters, currect_letters, game_info)
+def get_letter(game_info)
   char = []
   until char.length == 1 && char.match?(/[[:alpha:]]/)
     promte_for_letter
     temp = gets.chomp
+
     save_game(game_info) if temp.downcase.tr('^a-z', '') == 'save'
-    if wrong_letters.include?(temp) || currect_letters.include?(temp)
+
+    if game_info[:wrong_letters].include?(temp) || game_info[:currect_letters].include?(temp)
       puts used_letter
     else
       char = temp
