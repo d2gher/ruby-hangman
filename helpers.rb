@@ -14,11 +14,12 @@ def filter_words_into_array
   words
 end
 
-def get_letter(currect_letters, wrong_letters)
+def get_letter(wrong_letters, currect_letters, game_info)
   char = []
   until char.length == 1 && char.match?(/[[:alpha:]]/)
     promte_for_letter
     temp = gets.chomp
+    save_game(game_info) if temp.downcase.tr('^a-z', '') == 'save'
     if wrong_letters.include?(temp) || currect_letters.include?(temp)
       puts used_letter
     else
@@ -29,7 +30,7 @@ def get_letter(currect_letters, wrong_letters)
 end
 
 def clear_console
-  $stdout.clear_screen # or STDOUT.clear_screen
+  $stdout.clear_screen
 end
 
 def won_or_lost?(word_in_progress, mistakes)
@@ -43,4 +44,26 @@ def won_or_lost?(word_in_progress, mistakes)
     return true
   end
   false
+end
+
+def save_game(game_info)
+  filename = ''
+  while filename == ''
+    puts 'Enter a name for the save file'
+    filename = gets.chomp
+  end
+
+  Dir.mkdir('savefiles') unless Dir.exist?('savefiles')
+  File.open("savefiles/#{filename}", 'w') do |file|
+    file.puts game_info
+  end
+end
+
+def game_state(word, word_in_progress, wrong_letters, currect_letters)
+  {
+    :word => word,
+    :word_in_progress => word_in_progress,
+    :wrong_letters => wrong_letters,
+    :currect_letters => currect_letters
+  }
 end

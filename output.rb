@@ -106,8 +106,17 @@ module WordInProgress
     puts ''
   end
 
+  def print_wrong_letters(letters)
+    print 'Wrong letters: '
+    letters.each do |letter|
+      print "#{letter} "
+    end
+    puts ''
+    puts ''
+  end
+
   def promte_for_letter
-    puts 'Enter a letter:'
+    puts 'Enter a letter, or wirte "save" to save your progress:'
   end
 
   def used_letter
@@ -116,7 +125,7 @@ module WordInProgress
 
   def print_result(result)
     sleep 1
-    puts "\n#{'-' * result.length}"
+    puts "#{'-' * result.length}"
     sleep 1
     puts result
     sleep 1
